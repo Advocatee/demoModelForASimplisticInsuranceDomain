@@ -4,5 +4,5 @@ import com.example.demo.service.PeopleService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PeopleServiceImpl implements PeopleService {
+public class ClientsServiceImpl implements PeopleService {
 }

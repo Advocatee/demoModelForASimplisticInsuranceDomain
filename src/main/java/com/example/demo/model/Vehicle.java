@@ -13,12 +13,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-public class Transport extends BaseEntity {
+public class Vehicle extends BaseEntity {
 
     private int year;
     private String typeOfTransport;
     private double price;
-    @ManyToMany(mappedBy = "transports", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private List<People> peopleList = new ArrayList<>();
+    @ManyToMany(mappedBy = "vehicles", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<Clients> clientsList = new ArrayList<>();
 
 }

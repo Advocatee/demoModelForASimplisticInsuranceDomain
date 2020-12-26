@@ -1,4 +1,4 @@
 package com.example.demo.service;
 
-public interface TransportService {
+public interface ContractsService {
 }

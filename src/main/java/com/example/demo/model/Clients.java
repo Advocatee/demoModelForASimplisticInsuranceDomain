@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-public class People extends BaseEntity {
+public class Clients extends BaseEntity {
 
     private String fullName;
     private Date dateOfBirth;
@@ -19,6 +19,6 @@ public class People extends BaseEntity {
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "PEOPLE_TRANSPORT", joinColumns = {@JoinColumn(name = "PEOPLE_ID", referencedColumnName = "id")}
             , inverseJoinColumns = {@JoinColumn(name = "TRANSPORT_ID", referencedColumnName = "id")})
-    private List<Transport> transports = new ArrayList<>();
+    private List<Vehicle> vehicles = new ArrayList<>();
 
 }
