@@ -16,9 +16,8 @@ public class Clients extends BaseEntity {
     private String fullName;
     private Date dateOfBirth;
     private String emailAddress;
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name = "PEOPLE_TRANSPORT", joinColumns = {@JoinColumn(name = "PEOPLE_ID", referencedColumnName = "id")}
-            , inverseJoinColumns = {@JoinColumn(name = "TRANSPORT_ID", referencedColumnName = "id")})
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Vehicle> vehicles = new ArrayList<>();
-
+    @OneToMany(mappedBy = "clients", fetch = FetchType.LAZY)
+    private List<Contracts> contracts = new ArrayList<>();
 }
