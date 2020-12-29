@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Entity
-public class Contracts extends BaseEntity {
+public class Contract extends BaseEntity {
 
     private String phoneNumber;
     private Date dateOfInformation;
@@ -17,5 +17,5 @@ public class Contracts extends BaseEntity {
     private CoverageType coverageType;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
-    private Clients clients;
+    private Client client;
 }

@@ -1,22 +1,21 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.Clients;
+import com.example.demo.model.Client;
 import com.example.demo.repository.ClientsRepository;
-import com.example.demo.service.ClientsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.service.ClientService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientsServiceImpl implements ClientsService {
+public class ClientServiceImpl implements ClientService {
 
     private final ClientsRepository clientsRepository;
 
-    public ClientsServiceImpl(ClientsRepository clientsRepository) {
+    public ClientServiceImpl(ClientsRepository clientsRepository) {
         this.clientsRepository = clientsRepository;
     }
 
     @Override
-    public Clients save(Clients client) {
+    public Client save(Client client) {
         return clientsRepository.save(client);
     }
 }

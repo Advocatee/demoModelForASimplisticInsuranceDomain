@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
@@ -12,11 +13,9 @@ public class Vehicle extends BaseEntity {
 
     private int year;
     private String typeOfTransport;
-    private double price;
+    private BigDecimal price;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
-    private Clients client;
-
-
+    private Client client;
 
 }

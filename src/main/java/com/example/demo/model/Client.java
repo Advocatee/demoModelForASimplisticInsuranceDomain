@@ -11,13 +11,13 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-public class Clients extends BaseEntity {
+public class Client extends BaseEntity {
 
     private String fullName;
     private Date dateOfBirth;
     private String emailAddress;
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    private List<Vehicle> vehicles = new ArrayList<>();
-    @OneToMany(mappedBy = "clients", fetch = FetchType.LAZY)
-    private List<Contracts> contracts = new ArrayList<>();
+    private List<Vehicle> vehicle = new ArrayList<>();
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private List<Contract> contract = new ArrayList<>();
 }
