@@ -14,7 +14,7 @@ public class Vehicle extends BaseEntity {
     private int year;
     private String typeOfTransport;
     private BigDecimal price;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "client_id")
     private Client client;
 

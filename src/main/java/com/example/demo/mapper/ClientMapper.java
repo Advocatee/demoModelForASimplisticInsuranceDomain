@@ -17,4 +17,6 @@ public interface ClientMapper {
 
     Client toModel(CreateClientRequest clientRequest);
 
+    ClientDto toDto(Client client);
+
 }

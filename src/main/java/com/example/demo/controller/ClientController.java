@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.ClientDto;
 import com.example.demo.dto.CreateClientRequest;
 import com.example.demo.mapper.ClientMapper;
+import com.example.demo.model.Client;
 import com.example.demo.service.ClientService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,8 @@ public class ClientController {
 
     @PostMapping("/client")
     public ClientDto createClient(@RequestBody CreateClientRequest clientRequest) {
-        clientService.save(ClientMapper.INSTANCE.toModel(clientRequest));
-        return ClientMapper.INSTANCE.toDto(clientRequest);
+        Client client = clientService.save(ClientMapper.INSTANCE.toModel(clientRequest), clientRequest.getVehicleId());
+        return ClientMapper.INSTANCE.toDto(client);
     }
+
 }
