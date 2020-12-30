@@ -20,5 +20,4 @@ public class ClientController {
         clientService.save(ClientMapper.INSTANCE.toModel(clientRequest));
         return ClientMapper.INSTANCE.toDto(clientRequest);
     }
-
 }
