@@ -18,4 +18,12 @@ public class Vehicle extends BaseEntity {
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "year=" + year +
+                ", typeOfTransport='" + typeOfTransport + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
