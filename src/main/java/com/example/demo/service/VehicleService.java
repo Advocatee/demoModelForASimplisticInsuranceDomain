@@ -11,7 +11,7 @@ public interface VehicleService {
 
     Vehicle getVehicleById(UUID id);
 
-    void remove(UUID id);
+    void removeById(UUID id);
 
     List<Vehicle> getAllVehicle();
 

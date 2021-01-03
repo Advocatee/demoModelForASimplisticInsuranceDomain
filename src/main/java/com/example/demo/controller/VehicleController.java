@@ -5,7 +5,6 @@ import com.example.demo.dto.VehicleDto;
 import com.example.demo.mapper.VehicleMapper;
 import com.example.demo.model.Vehicle;
 import com.example.demo.service.VehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +33,7 @@ public class VehicleController {
 
     @DeleteMapping("/vehicle/{id}")
     public ResponseEntity<Void> deleteVehicleById(@PathVariable UUID id) {
-        vehicleService.remove(id);
+        vehicleService.removeById(id);
         return ResponseEntity.ok().build();
     }
 

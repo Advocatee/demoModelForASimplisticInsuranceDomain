@@ -28,7 +28,7 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public void remove(UUID id) {
+    public void removeById(UUID id) {
         vehicleRepository.deleteById(id);
     }
 
