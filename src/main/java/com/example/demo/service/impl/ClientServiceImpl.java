@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.exception.VehicleNotFound;
 import com.example.demo.model.Client;
 import com.example.demo.model.Vehicle;
 import com.example.demo.repository.ClientsRepository;
@@ -26,19 +27,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client save(Client client, UUID vehicleId) {
-        Vehicle vehicle = null;
         if (vehicleId != null) {
-            try {
-                vehicle = vehicleRepository.getOne(vehicleId);
-            } catch (EntityNotFoundException e) {
-                e.getMessage();
-            }
-            if (vehicle != null) {
-                client.getVehicle().add(vehicle);
-                vehicle.setClient(client);
-            } else {
-                throw new NoSuchParameterException("Don't Found");
-            }
+            Vehicle vehicle = vehicleRepository.getOne(vehicleId);
+            client.getVehicle().add(vehicle);
+            vehicle.setClient(client);
         }
         return clientsRepository.save(client);
     }

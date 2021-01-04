@@ -2,9 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.ClientDto;
 import com.example.demo.dto.CreateClientRequest;
+import com.example.demo.exception.VehicleNotFound;
 import com.example.demo.mapper.ClientMapper;
 import com.example.demo.model.Client;
 import com.example.demo.service.ClientService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +24,12 @@ public class ClientController {
 
     @PostMapping("/client")
     public ResponseEntity<ClientDto> createClient(@RequestBody CreateClientRequest clientRequest) {
-        Client client = clientService.save(ClientMapper.INSTANCE.toModel(clientRequest), clientRequest.getVehicleId());
-        return ResponseEntity.ok(ClientMapper.INSTANCE.toDto(client));
+        try {
+            Client client = clientService.save(ClientMapper.INSTANCE.toModel(clientRequest), clientRequest.getVehicleId());
+            return ResponseEntity.ok(ClientMapper.INSTANCE.toDto(client));
+        } catch (VehicleNotFound e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @DeleteMapping("/client/{id}")
