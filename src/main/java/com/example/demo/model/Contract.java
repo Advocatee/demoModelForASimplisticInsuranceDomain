@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -18,4 +19,16 @@ public class Contract extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicle;
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", dateOfInformation=" + dateOfInformation +
+                ", coverageType=" + coverageType +
+                '}';
+    }
 }

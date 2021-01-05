@@ -14,10 +14,6 @@ public interface ClientMapper {
 
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
-    ClientDto toDto(CreateClientRequest clientRequest);
-
-    Client toModel(ClientDto clientDto);
-
     Client toModel(CreateClientRequest clientRequest);
 
     @Mapping(source = "id", target = "userID")

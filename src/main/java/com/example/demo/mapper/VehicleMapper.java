@@ -19,8 +19,6 @@ public interface VehicleMapper {
     @Mapping(source = "id", target = "vehicleId")
     VehicleDto toDto(Vehicle vehicle);
 
-    Vehicle toModel(VehicleDto vehicleDto);
-
     Vehicle toModel(CreateVehicleRequest vehicleRequest);
 
     List<VehicleDto> toDto(List<Vehicle> vehicles);
