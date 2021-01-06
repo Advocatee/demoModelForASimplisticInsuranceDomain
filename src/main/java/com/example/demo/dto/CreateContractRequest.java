@@ -1,8 +1,11 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.CoverageType;
+import com.example.demo.model.PropertyPolicy;
 import lombok.Data;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,4 +17,7 @@ public class CreateContractRequest {
     private CoverageType coverageType;
     private UUID clientId;
     private UUID vehicleId;
+    private Date policyExpirationDate;
+    @Enumerated(EnumType.STRING)
+    private PropertyPolicy propertyPolicy;
 }

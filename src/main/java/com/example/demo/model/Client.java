@@ -28,4 +28,6 @@ public class Client extends BaseEntity {
     private List<Vehicle> vehicle = new ArrayList<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Contract> contract = new ArrayList<>();
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private List<BasePolicy> policies = new ArrayList<>();
 }
