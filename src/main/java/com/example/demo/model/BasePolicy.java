@@ -9,13 +9,14 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="base_polisy",
+        discriminatorType = DiscriminatorType.STRING)
 public class BasePolicy extends BaseEntity {
 
     private String phoneNumber;
     private Date dateOfInformation;
     private Date policyExpirationDate;
-    @Enumerated(EnumType.STRING)
-    private CoverageType coverageType;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;
