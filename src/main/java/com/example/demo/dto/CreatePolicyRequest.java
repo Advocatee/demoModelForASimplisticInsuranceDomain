@@ -1,16 +1,15 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.CoverageType;
-import com.example.demo.model.PropertyPolicy;
+import com.example.demo.model.PropertyPolicyType;
 import lombok.Data;
+import org.springframework.lang.Nullable;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.Date;
 import java.util.UUID;
 
 @Data
-public class CreateContractRequest {
+public class CreatePolicyRequest {
 
     private String phoneNumber;
     private Date dateOfInformation;
@@ -18,6 +17,6 @@ public class CreateContractRequest {
     private UUID clientId;
     private UUID vehicleId;
     private Date policyExpirationDate;
-    @Enumerated(EnumType.STRING)
-    private PropertyPolicy propertyPolicy;
+    private String policyType;
+
 }

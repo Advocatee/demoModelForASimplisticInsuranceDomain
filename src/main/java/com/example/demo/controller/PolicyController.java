@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ContractDto;
-import com.example.demo.dto.CreateContractRequest;
+import com.example.demo.dto.CreatePolicyRequest;
 import com.example.demo.mapper.ContractMapper;
-import com.example.demo.model.Contract;
+import com.example.demo.model.BasePolicy;
 import com.example.demo.service.ContractService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +14,7 @@ public class ContractController {
 
     private final ContractService contractService;
 
-    public ContractController(ContractService contractService) {
+    public PolicyController(ContractService contractService) {
         this.contractService = contractService;
     }
 

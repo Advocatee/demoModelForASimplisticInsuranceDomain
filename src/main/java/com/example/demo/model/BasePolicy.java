@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="base_polisy",
+@DiscriminatorColumn(name="base_policy",
         discriminatorType = DiscriminatorType.STRING)
 public class BasePolicy extends BaseEntity {
 

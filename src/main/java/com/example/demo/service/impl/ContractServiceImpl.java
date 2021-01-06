@@ -7,6 +7,7 @@ import com.example.demo.model.Contract;
 import com.example.demo.model.Vehicle;
 import com.example.demo.repository.ClientsRepository;
 import com.example.demo.repository.ContractRepository;
+import com.example.demo.repository.PolicyRepository;
 import com.example.demo.repository.VehicleRepository;
 import com.example.demo.service.ContractService;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class ContractServiceImpl implements ContractService {
         this.contractRepository = contractRepository;
         this.clientsRepository = clientsRepository;
         this.vehicleRepository = vehicleRepository;
+        this.policyRepository = policyRepository;
     }
 
     @Override
