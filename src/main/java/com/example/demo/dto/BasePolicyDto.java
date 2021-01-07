@@ -1,16 +1,16 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.CoverageType;
+import com.example.demo.model.Client;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class ContractDto {
+public class BasePolicyDto {
 
     private String phoneNumber;
     private Date dateOfInformation;
-    private CoverageType coverageType;
     private Date policyExpirationDate;
+    private Client client;
 
 }

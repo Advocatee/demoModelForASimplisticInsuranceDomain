@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-public class VehicleDto {
+public class VehicleDto extends BaseInsuredDto {
 
     private int year;
     private String typeOfTransport;
