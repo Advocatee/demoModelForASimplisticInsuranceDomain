@@ -10,7 +10,6 @@ import com.example.demo.repository.ContractRepository;
 import com.example.demo.repository.PolicyRepository;
 import com.example.demo.repository.VehicleRepository;
 import com.example.demo.service.ContractService;
-import com.example.demo.repository.PropertyRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -29,7 +28,8 @@ public class ContractServiceImpl implements ContractService {
         this.clientsRepository = clientsRepository;
         this.vehicleRepository = vehicleRepository;
         this.policyRepository = policyRepository;
-        this.propertyRepository= propertyRepository;
+        this.propertyRepository = propertyRepository;
+        this.propertyPolicyRepository = propertyPolicyRepository;
     }
 
     @Override
