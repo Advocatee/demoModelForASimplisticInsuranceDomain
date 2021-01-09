@@ -14,7 +14,6 @@ public class PropertyPolicyServiceImpl implements PropertyPolicyService {
         this.propertyPolicyRepository = propertyPolicyRepository;
     }
 
-
     @Override
     public PropertyPolicy save(PropertyPolicy propertyPolicy) {
         return propertyPolicyRepository.save(propertyPolicy);

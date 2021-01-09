@@ -4,8 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +16,5 @@ public class BaseInsured extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
-    @OneToMany(mappedBy = "vehicle")
-    private List<Contract> contracts = new ArrayList<>();
+
 }

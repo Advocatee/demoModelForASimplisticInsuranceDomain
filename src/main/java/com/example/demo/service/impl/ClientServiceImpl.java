@@ -1,15 +1,12 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.VehicleNotFound;
 import com.example.demo.model.Client;
 import com.example.demo.model.Vehicle;
 import com.example.demo.repository.ClientsRepository;
 import com.example.demo.repository.VehicleRepository;
 import com.example.demo.service.ClientService;
-import org.hibernate.procedure.NoSuchParameterException;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.UUID;
 

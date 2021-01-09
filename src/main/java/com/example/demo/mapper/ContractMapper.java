@@ -2,7 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.ContractDto;
 import com.example.demo.model.BasePolicy;
-import com.example.demo.model.Contract;
+import com.example.demo.model.Policy;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,5 +13,5 @@ public interface ContractMapper {
 
     ContractDto toDto(BasePolicy basePolicy);
 
-    ContractDto toDto(Contract contract);
+    ContractDto toDto(Policy policy);
 }

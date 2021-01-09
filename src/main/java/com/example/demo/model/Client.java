@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(exclude = {"contract","vehicle"}, callSuper = false)
+@EqualsAndHashCode(exclude = {"policies","vehicle"}, callSuper = false)
 public class Client extends BaseEntity {
 
     private String fullName;
@@ -27,7 +27,7 @@ public class Client extends BaseEntity {
     @OneToMany(mappedBy = "client",  fetch = FetchType.EAGER)
     private List<Vehicle> vehicle = new ArrayList<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    private List<Contract> contract = new ArrayList<>();
+    private List<Policy> policy = new ArrayList<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<BasePolicy> policies = new ArrayList<>();
 }

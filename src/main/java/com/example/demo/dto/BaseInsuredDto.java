@@ -1,7 +1,7 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.Client;
-import com.example.demo.model.Contract;
+import com.example.demo.model.Policy;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -11,5 +11,5 @@ import java.util.List;
 public class BaseInsuredDto {
 
     private Client client;
-    private List<Contract> contracts = new ArrayList<>();
+    private List<Policy> policies = new ArrayList<>();
 }

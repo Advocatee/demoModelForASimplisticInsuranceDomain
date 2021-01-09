@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ClientDto;
-import com.example.demo.dto.CreateClientRequest;
+import com.example.demo.dto.request.CreateClientRequest;
 import com.example.demo.exception.VehicleNotFound;
 import com.example.demo.mapper.ClientMapper;
 import com.example.demo.model.Client;

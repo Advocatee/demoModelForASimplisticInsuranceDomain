@@ -1,6 +1,6 @@
 package com.example.demo.mapper;
 
-import com.example.demo.dto.CreateVehicleRequest;
+import com.example.demo.dto.request.CreateVehicleRequest;
 import com.example.demo.dto.VehicleDto;
 import com.example.demo.model.Vehicle;
 import org.mapstruct.Mapper;

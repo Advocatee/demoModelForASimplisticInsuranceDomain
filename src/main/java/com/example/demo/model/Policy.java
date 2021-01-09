@@ -9,12 +9,12 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Entity
-public class Contract extends BaseEntity {
+public class Policy extends BaseEntity {
 
     // TODO rename this class in Policy
 
     private String phoneNumber;
-    private Date dateOfInformation;
+    protected Date dateOfInformation;
     @Enumerated(EnumType.STRING)
     private CoverageType coverageType;
     @ManyToOne(fetch = FetchType.LAZY)
