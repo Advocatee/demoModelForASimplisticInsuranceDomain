@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class ContractController {
+@RestController("/policy")
+public class PolicyController {
 
     private final ContractService contractService;
 
@@ -18,11 +18,10 @@ public class ContractController {
         this.contractService = contractService;
     }
 
-    @PostMapping("/contract")
-    public ContractDto createContract(@RequestBody CreateContractRequest contractRequest) {
-        Contract contract = contractService.save(ContractMapper.INSTANCE.toModel(contractRequest)
-                , contractRequest.getClientId(), contractRequest.getVehicleId());
-        return ContractMapper.INSTANCE.toDto(contract);
+    @PostMapping
+    public ContractDto createContract(@RequestBody CreatePolicyRequest policyRequest) {
+        BasePolicy basePolicy = contractService.save(policyRequest);
+        return ContractMapper.INSTANCE.toDto(basePolicy);
     }
 
 }

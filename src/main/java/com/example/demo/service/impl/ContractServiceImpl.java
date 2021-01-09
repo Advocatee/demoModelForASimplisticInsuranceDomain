@@ -1,14 +1,11 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dto.CreatePolicyRequest;
 import com.example.demo.exception.IllegalContractArgument;
 import com.example.demo.exception.VehicleNofBelongToClient;
-import com.example.demo.model.Client;
-import com.example.demo.model.Contract;
-import com.example.demo.model.Vehicle;
-import com.example.demo.repository.ClientsRepository;
-import com.example.demo.repository.ContractRepository;
-import com.example.demo.repository.PolicyRepository;
-import com.example.demo.repository.VehicleRepository;
+import com.example.demo.exception.IllegalPolicyArgument;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
 import com.example.demo.service.ContractService;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +20,17 @@ public class ContractServiceImpl implements ContractService {
 
     private final ContractRepository contractRepository;
 
-    public ContractServiceImpl(ContractRepository contractRepository, ClientsRepository clientsRepository, VehicleRepository vehicleRepository) {
+    private final PolicyRepository policyRepository;
+
+    private final PropertyRepository propertyRepository;
+
+    private final PropertyPolicyRepository propertyPolicyRepository;
+
+    public ContractServiceImpl(ContractRepository contractRepository,
+                               ClientsRepository clientsRepository,
+                               VehicleRepository vehicleRepository,
+                               PolicyRepository policyRepository,
+                               PropertyRepository propertyRepository, PropertyPolicyRepository propertyPolicyRepository) {
         this.contractRepository = contractRepository;
         this.clientsRepository = clientsRepository;
         this.vehicleRepository = vehicleRepository;
@@ -53,6 +60,36 @@ public class ContractServiceImpl implements ContractService {
             throw new VehicleNofBelongToClient();
         }
         return contractRepository.save(contract);
+    }
+
+    public <T extends BasePolicy> T save(CreatePolicyRequest policyRequest) {
+        String policyType = policyRequest.getPolicyType();
+
+        UUID clientId = policyRequest.getClientId();
+        UUID vehicleId = policyRequest.getVehicleId();
+        UUID propertyId = policyRequest.getPropertyId();
+        Client client = clientsRepository.getOne(clientId);
+        if ("vehicle".equals(policyType)) {
+            VehiclePolicy vehiclePolicy = new VehiclePolicy();
+            Vehicle vehicle = vehicleRepository.getOne(vehicleId);
+            vehiclePolicy.setClient(client);
+            vehiclePolicy.setVehicle(vehicle);
+            vehiclePolicy.setCoverageType(CoverageType.COLLISION);
+
+            VehiclePolicy savedVehiclePolicy = policyRepository.save(vehiclePolicy);
+
+            return (T) savedVehiclePolicy;
+
+        } else if ("property".equals(policyType)) {
+            PropertyPolicy propertyPolicy = new PropertyPolicy();
+            Property property = propertyRepository.getOne(propertyId);
+            propertyPolicy.setClient(client);
+            propertyPolicy.setProperty(property);
+
+            PropertyPolicy savedPropertyPolicy = propertyPolicyRepository.save(propertyPolicy);
+            return (T) savedPropertyPolicy;
+        }
+        throw new IllegalPolicyArgument();
     }
 }
 

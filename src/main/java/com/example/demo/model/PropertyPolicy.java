@@ -12,5 +12,8 @@ import javax.persistence.*;
 public class PropertyPolicy extends BasePolicy {
 
     @Enumerated(EnumType.STRING)
-    private PropertyPolicyType policyType;
+    private PropertyPolicyType propertyPolicyType;
+    @ManyToOne
+    @JoinColumn(name = "property_id")
+    private Property property;
 }

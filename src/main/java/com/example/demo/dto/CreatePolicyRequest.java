@@ -13,9 +13,15 @@ public class CreatePolicyRequest {
 
     private String phoneNumber;
     private Date dateOfInformation;
+    @Nullable
     private CoverageType coverageType;
+    @Nullable
+    private PropertyPolicyType propertyPolicyType;
     private UUID clientId;
+    @Nullable
     private UUID vehicleId;
+    @Nullable
+    private UUID propertyId;
     private Date policyExpirationDate;
     private String policyType;
 

@@ -14,5 +14,4 @@ public interface ContractMapper {
     ContractDto toDto(BasePolicy basePolicy);
 
     ContractDto toDto(Contract contract);
-
 }

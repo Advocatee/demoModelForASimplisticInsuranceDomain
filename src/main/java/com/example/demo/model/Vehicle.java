@@ -10,18 +10,14 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@Entity
-
-public class Vehicle extends BaseEntity {
+@DiscriminatorValue("vehicle-insured")
+public class Vehicle extends BaseInsured {
 
     private int year;
     private String typeOfTransport;
     private BigDecimal price;
-    @ManyToOne()
-    @JoinColumn(name = "client_id")
-    private Client client;
-    @OneToMany(mappedBy = "vehicle")
-    private List<Contract> contracts = new ArrayList<>();
+    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
+    private List<VehiclePolicy> vehiclePolicy = new ArrayList<>();
 
     @Override
     public String toString() {
