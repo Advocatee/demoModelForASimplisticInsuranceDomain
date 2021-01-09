@@ -35,7 +35,7 @@ public class ContractServiceImpl implements ContractService {
         this.clientsRepository = clientsRepository;
         this.vehicleRepository = vehicleRepository;
         this.policyRepository = policyRepository;
-        this.propertyRepository = propertyRepository;
+        this.propertyRepository= propertyRepository;
         this.propertyPolicyRepository = propertyPolicyRepository;
     }
 
