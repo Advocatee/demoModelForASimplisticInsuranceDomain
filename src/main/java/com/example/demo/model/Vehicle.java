@@ -19,8 +19,6 @@ public class Vehicle extends BaseInsured {
     private BigDecimal price;
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
     private List<VehiclePolicy> vehiclePolicy = new ArrayList<>();
-    @OneToMany(mappedBy = "vehicle")
-    private List<Policy> policies = new ArrayList<>();
 
     @Override
     public String toString() {

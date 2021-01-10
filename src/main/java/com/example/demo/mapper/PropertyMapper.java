@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {ClientMapper.class})
 public interface PropertyMapper {
 
     PropertyMapper INSTANCE = Mappers.getMapper(PropertyMapper.class);

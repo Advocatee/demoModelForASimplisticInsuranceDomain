@@ -11,6 +11,6 @@ public class BasePolicyDto {
     private String phoneNumber;
     private Date dateOfInformation;
     private Date policyExpirationDate;
-    private Client client;
+    private ClientDto client;
 
 }

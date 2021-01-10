@@ -13,7 +13,7 @@ public class VehiclePolicy extends BasePolicy {
 
     @Enumerated(EnumType.STRING)
     private CoverageType coverageType;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 

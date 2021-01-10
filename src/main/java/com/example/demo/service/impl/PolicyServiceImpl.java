@@ -1,10 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.request.CreatePolicyRequest;
-import com.example.demo.exception.IllegalContractArgument;
-import com.example.demo.exception.PropertyNullPointer;
-import com.example.demo.exception.VehicleNofBelongToClient;
-import com.example.demo.exception.IllegalPolicyArgument;
+import com.example.demo.exception.*;
 import com.example.demo.model.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.PolicyService;
@@ -20,7 +17,6 @@ public class PolicyServiceImpl implements PolicyService {
 
     private final ClientsRepository clientsRepository;
 
-    private final ContractRepository contractRepository;
 
     private final PolicyRepository policyRepository;
 
@@ -28,40 +24,15 @@ public class PolicyServiceImpl implements PolicyService {
 
     private final PropertyPolicyRepository propertyPolicyRepository;
 
-    public PolicyServiceImpl(ContractRepository contractRepository,
-                             ClientsRepository clientsRepository,
+    public PolicyServiceImpl(ClientsRepository clientsRepository,
                              VehicleRepository vehicleRepository,
                              PolicyRepository policyRepository,
                              PropertyRepository propertyRepository, PropertyPolicyRepository propertyPolicyRepository) {
-        this.contractRepository = contractRepository;
         this.clientsRepository = clientsRepository;
         this.vehicleRepository = vehicleRepository;
         this.policyRepository = policyRepository;
         this.propertyRepository = propertyRepository;
         this.propertyPolicyRepository = propertyPolicyRepository;
-    }
-
-    @Override
-    public Policy save(Policy policy, UUID clientId, UUID vehicleId) {
-        if (clientId == null || vehicleId == null) {
-            throw new IllegalContractArgument();
-        }
-        Client client = clientsRepository.getOne(clientId);
-        Vehicle vehicle = vehicleRepository.getOne(vehicleId);
-        boolean hasBoundVehicle = false;
-        for (Vehicle v : client.getVehicle()
-        ) {
-            if (v.getId().equals(vehicleId)) {
-                hasBoundVehicle = true;
-                policy.setClient(client);
-                policy.setVehicle(vehicle);
-                break;
-            }
-        }
-        if (!hasBoundVehicle) {
-            throw new VehicleNofBelongToClient();
-        }
-        return contractRepository.save(policy);
     }
 
     public <T extends BasePolicy> T save(CreatePolicyRequest policyRequest) {
@@ -74,7 +45,7 @@ public class PolicyServiceImpl implements PolicyService {
         if ("vehicle".equals(policyType)) {
             VehiclePolicy vehiclePolicy = new VehiclePolicy();
             if (vehicleId == null) {
-                throw new PropertyNullPointer();
+                throw new VehicleNullPointer();
             }
             Vehicle vehicle = vehicleRepository.getOne(vehicleId);
             vehiclePolicy.setClient(client);
@@ -87,6 +58,9 @@ public class PolicyServiceImpl implements PolicyService {
             return (T) savedVehiclePolicy;
         } else if ("property".equals(policyType)) {
             PropertyPolicy propertyPolicy = new PropertyPolicy();
+            if (propertyId == null) {
+                throw new PropertyNullPointer();
+            }
             Property property = propertyRepository.getOne(propertyId);
             propertyPolicy.setClient(client);
             propertyPolicy.setProperty(property);
@@ -101,16 +75,16 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public void removeById(UUID id) {
-        contractRepository.deleteById(id);
+        policyRepository.deleteById(id);
     }
 
     @Override
-    public List<Policy> getAllPolicy() {
-        return null;
+    public List<BasePolicy> getAllPolicy() {
+        return policyRepository.findAll();
     }
 
     @Override
-    public Policy getPolicyById(UUID id) {
-        return null;
+    public BasePolicy getPolicyById(UUID id) {
+        return policyRepository.getOne(id);
     }
 }
