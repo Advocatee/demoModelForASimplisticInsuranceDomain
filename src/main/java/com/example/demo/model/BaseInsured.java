@@ -13,8 +13,6 @@ import javax.persistence.*;
         discriminatorType = DiscriminatorType.STRING)
 public class BaseInsured extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+
 
 }

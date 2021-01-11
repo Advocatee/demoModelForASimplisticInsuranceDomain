@@ -17,17 +17,17 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(exclude = {"policies","vehicle"}, callSuper = false)
+@EqualsAndHashCode(exclude = {"policy", "vehicle"}, callSuper = false)
 public class Client extends BaseEntity {
 
     private String fullName;
     private Date dateOfBirth;
     private String emailAddress;
     @Cascade({CascadeType.ALL})
-    @OneToMany(mappedBy = "client",  fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private List<Vehicle> vehicle = new ArrayList<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<BasePolicy> policy = new ArrayList<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    private List<BasePolicy> policies = new ArrayList<>();
+    private List<Property> properties = new ArrayList<>();
 }
