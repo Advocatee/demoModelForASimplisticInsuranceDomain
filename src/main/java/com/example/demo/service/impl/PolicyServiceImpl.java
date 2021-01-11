@@ -50,7 +50,7 @@ public class PolicyServiceImpl implements PolicyService {
             Vehicle vehicle = vehicleRepository.getOne(vehicleId);
             vehiclePolicy.setClient(client);
             vehiclePolicy.setVehicle(vehicle);
-            vehiclePolicy.setCoverageType(CoverageType.COLLISION);
+            vehiclePolicy.setCoverageType(policyRequest.getCoverageType());
             vehiclePolicy.setPhoneNumber(policyRequest.getPhoneNumber());
             vehiclePolicy.setDateOfInformation(policyRequest.getDateOfInformation());
             vehiclePolicy.setPolicyExpirationDate(policyRequest.getPolicyExpirationDate());
@@ -63,6 +63,7 @@ public class PolicyServiceImpl implements PolicyService {
             }
             Property property = propertyRepository.getOne(propertyId);
             propertyPolicy.setClient(client);
+            propertyPolicy.setPropertyPolicyType(policyRequest.getPropertyPolicyType());
             propertyPolicy.setProperty(property);
             propertyPolicy.setPhoneNumber(policyRequest.getPhoneNumber());
             propertyPolicy.setDateOfInformation(policyRequest.getDateOfInformation());

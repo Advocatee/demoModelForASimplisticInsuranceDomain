@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Client;
 import lombok.Data;
 
 import java.util.Date;
