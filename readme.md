@@ -6,9 +6,12 @@ Model for a simplistic insurance domain
 
 1. Clone the repository
    ```https://github.com/Advocatee/demoModelForASimplisticInsuranceDomain.git```
+   
+   or
+   ```git clone https://github.com/Advocatee/demoModelForASimplisticInsuranceDomain.git```
 2. Change the working directory
    
-   ```cd github-profile-readme```
+   ```cd demoModelForASimplisticInsuranceDomain```
 3. Install dependencies
    
    ```mvn install```
@@ -16,7 +19,7 @@ Model for a simplistic insurance domain
    
    ```mvn start```
 
-Local access to the project: ```http://localhost:8080/swagger-ui.html#/```
+API documentation: ```http://localhost:8080/swagger-ui.html#/```
 
 #Technology Stack
 Date Base:
@@ -24,11 +27,11 @@ Date Base:
 
 Development environment: ```IntelliJ IDEA```
 
-Framework: Spring, Hibernate
+Framework: ```Spring, Hibernate``` 
 
-Project: Spring Boot
+Project: ```Spring Boot``` 
 
-Other technologies: swagger, mapstruct, lombok
+Other technologies: ```Swagger, Mapstruct, Lombok``` 
 
 # Author
 Roman Kityrko
