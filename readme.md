@@ -22,7 +22,7 @@ Model for a simplistic insurance domain
 API documentation: ```http://localhost:8080/swagger-ui.html#/```
 
 #Technology Stack
-Date Base:
+Datebase:
 ```PostgreSQL```
 
 Development environment: ```IntelliJ IDEA```
